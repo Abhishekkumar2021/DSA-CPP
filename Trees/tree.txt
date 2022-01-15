@@ -1,0 +1,69 @@
+Enter root data : 10
+Enter number of childrens of 10 : 3
+Enter child 1 of 10 : 20
+Enter child 2 of 10 : 30
+Enter child 3 of 10 : 40
+Enter number of childrens of 20 : 2
+Enter child 1 of 20 : 50
+Enter child 2 of 20 : 60
+Enter number of childrens of 30 : 2
+Enter child 1 of 30 : 70
+Enter child 2 of 30 : 80
+Enter number of childrens of 40 : 2
+Enter child 1 of 40 : 90
+Enter child 2 of 40 : 100
+Enter number of childrens of 50 : 1
+Enter child 1 of 50 : 110
+Enter number of childrens of 60 : 1
+Enter child 1 of 60 : 120
+Enter number of childrens of 70 : 1
+Enter child 1 of 70 : 130
+Enter number of childrens of 80 : 1
+Enter child 1 of 80 : 140
+Enter number of childrens of 90 : 1
+Enter child 1 of 90 : 150
+Enter number of childrens of 100 : 1
+Enter child 1 of 100 : 160
+Enter number of childrens of 110 : 0
+Enter number of childrens of 120 : 0
+Enter number of childrens of 130 : 0
+Enter number of childrens of 140 : 0
+Enter number of childrens of 150 : 0
+Enter number of childrens of 160 : 0
+Childrens of 10 are : 
+1. 20
+2. 30
+3. 40
+Childrens of 20 are : 
+1. 50
+2. 60
+Childrens of 30 are : 
+1. 70
+2. 80
+Childrens of 40 are : 
+1. 90
+2. 100
+Childrens of 50 are : 
+1. 110
+Childrens of 60 are :
+1. 120
+Childrens of 70 are :
+1. 130
+Childrens of 80 are :
+1. 140
+Childrens of 90 are :
+1. 150
+Childrens of 100 are :
+1. 160
+Childrens of 110 are :
+No children !
+Childrens of 120 are :
+No children !
+Childrens of 130 are :
+No children !
+Childrens of 140 are :
+No children !
+Childrens of 150 are :
+No children !
+Childrens of 160 are :
+No children !
