@@ -1,0 +1,21 @@
+array* create_new_array(int size)  //this function will create a new array with all it's element having a default value of 0 and return the pointer to the new array
+array* create_new_array(int size, int default)  //this function will create a new array with all it's element having a default value equals to the provided value and return the pointer to the new array
+void reverse_array() //this will reverse the array 
+void sort_array(y) //this will sort the array
+int current_size() //this will return the current size of the array.
+bool is_Found(int element) //this will return true if the element is found in the array
+int index_of(int element) //this will return the index of the element in the array, and if not found it simply returns -1
+void remove_element(int element) //this will remove the element from the array 
+void push_element(int element) //this will push the element at the back of the array
+int pop_element() //this will pop the last element from the array and return the element removed
+void copy_array(array *from_array) //this will copy each element of the from array to the array on which this function has been called.
+int shift_array() //this will shift(means remove an element from the begining of the array) the array and return the element removed 
+void unshift_array() //this will add an element to the beginning of the array
+int max_element() //this will return the maximum element of the array 
+int min_element() //this will return the minimum element in the array 
+int sum_element() //this will return the sum of all the elements in the array 
+int product_element() //this will return the product of all the elements in the array 
+int count_element(int element) //this will return the count of any elemnt provided to the function 
+void resize_array(int new_size) //this will resize the array such that all the previous elements remains in the array and if you have decreased the size of the array, then it will print all the elements that are removed from the original array.
+void clear_array() //this will clear all the elements in the array and put 0 for the elements of the array
+void delete_array() //this will destroy the whole array(means free all the memory it have used)
