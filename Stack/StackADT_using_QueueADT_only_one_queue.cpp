@@ -6,27 +6,33 @@ template <typename T>
 class StackADT
 {
     QueueADT<T> queue;
+
 public:
-    void createNewStack(int capacity){
+    void createNewStack(int capacity)
+    {
         queue.createNewQueue(capacity);
     }
-    bool isEmpty(){
+    bool isEmpty()
+    {
         return queue.isEmpty();
     }
-    bool isFull(){
+    bool isFull()
+    {
         return queue.isFull();
     }
-    void push(T item){
+    void push(T item)
+    {
         queue.Add(item);
     }
-    T pop(){
-      int size = queue.size();
-      for(int count = 0; count<size-1; ++count){
-         queue.Add(queue.Delete());
-      }
-      T answer = queue.Delete();
-      return answer;
-    
+    T pop()
+    {
+        int size = queue.size();
+        for (int count = 0; count < size - 1; ++count)
+        {
+            queue.Add(queue.Delete());
+        }
+        T answer = queue.Delete();
+        return answer;
     }
 };
 int main()
@@ -47,9 +53,9 @@ int main()
     cout << stack.pop() << endl;
     cout << stack.pop() << endl;
     cout << stack.pop() << endl;
-    cout << stack.pop()<< endl;
-    cout << stack.pop()<< endl;
-    cout << stack.pop()<< endl;
+    cout << stack.pop() << endl;
+    cout << stack.pop() << endl;
+    cout << stack.pop() << endl;
     stack.push(10);
     stack.push(20);
     stack.push(30);
