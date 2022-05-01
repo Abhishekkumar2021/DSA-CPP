@@ -506,13 +506,12 @@ public:
     void kruskal()
     {
         // The first step is to sort the List on the based of weights.
-        bool visited[n + 1] = {false};
-        visited[0] = true;
+        bool visited[n] = {false};
         Edge MST[n - 1];
 
         sort(List, List + e, compare);
-        int parent[n + 1];
-        for (int i = 0; i <= n; i++)
+        int parent[n];
+        for (int i = 0; i < n; i++)
         {
             parent[i] = i;
         }
@@ -534,7 +533,7 @@ public:
         {
             cout << MST[i].source << " " << MST[i].destination << "\n";
         }
-        for (int i = 1; i <= n; i++)
+        for (int i = 1; i < n; i++)
         {
             cout << parent[i] << " ";
         }
