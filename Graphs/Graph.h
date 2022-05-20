@@ -305,6 +305,7 @@ public:
 class GraphUsingAdjacencyMatrix
 {
     int **matrix;
+    int *parent;
     int e;
     int n;
 
@@ -314,6 +315,7 @@ public:
         this->n = n;
         this->e = e;
         this->matrix = new int *[n + 1];
+        this->parent = new int[n+1];
         for (int i = 0; i <= n; i++)
         {
             this->matrix[i] = new int[n + 1];
@@ -387,6 +389,9 @@ public:
             }
             cout << "\n";
         }
+    }
+    void fillParent(){
+        
     }
 };
 

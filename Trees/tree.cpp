@@ -6,7 +6,7 @@ int main(){
     // freopen("input.txt","r",stdin);
     // freopen("output.txt","w",stdout);
     treeNode<int> *root;
-    root = createTree();
+    root = createTreeRecursive();
     // printTree(root);
     // cout<<"Number of nodes in the tree = "<<numNodes(root)<<endl;
     // cout<<"The height of the tree = "<<height(root)<<endl;

@@ -1,0 +1,1 @@
+ int len = s.length();

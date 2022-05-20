@@ -33,7 +33,7 @@ void countingSort_digitwise(int arr[], int n, int digitPlaceValue)
 
 void radixSort(int arr[], int n)
 {
-    int maxDigit = 4;
+    int maxDigit = 3;
     for (int i = 0; i < maxDigit; i++)
     {
         countingSort_digitwise(arr, n, pow(10, i));
@@ -41,7 +41,7 @@ void radixSort(int arr[], int n)
 }
 int main()
 {
-    int arr[] = {2, 5, 1, 9, 3, 4, 2, 10};
+    int arr[] = {20446, 24675, 29666, 39843, 12308, 49424, 13002, 67073, 29627, 26366};
     radixSort(arr, sizeof(arr) / sizeof(int));
     for (auto element : arr)
         cout << element << " ";

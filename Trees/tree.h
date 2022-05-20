@@ -31,7 +31,7 @@ void printTreeRecursive(treeNode<int> *root)
     }
     for (int i = 0; i < root->children.size(); i++)
     {
-        printTree(root->children[i]);
+        printTreeRecursive(root->children[i]);
     }
 }
 
@@ -54,7 +54,7 @@ treeNode<int> *createTreeRecursive()
     }
     for (int i = 0; i < root->children.size(); i++)
     {
-        root->children[i] = createTree();
+        root->children[i] = createTreeRecursive();
     }
 }
 
