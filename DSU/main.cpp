@@ -13,12 +13,13 @@ class DSU{
         if(parent[x]==x) return x;
         return find(parent[x]);
     }
-    bool isSameSet(int a,int b){
+    bool sameSet(int a,int b){
         return find(a)==find(b);
     }
     int join(int a,int b){
         int pa = find(a);
         int pb = find(b);
+        if(pa==pb) return 0;
         parent[pa] = pb;
     }
     int numSets(){

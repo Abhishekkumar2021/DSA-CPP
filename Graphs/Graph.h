@@ -299,6 +299,123 @@ public:
             color[front] = 'b';
         }
     }
+    bool cycleHelperBFS(bool vis[], int sv)
+    {
+        vis[sv] = 1;
+        queue<pair<int, int>> pq;
+        pq.push({sv, -1});
+        while (!pq.empty())
+        {
+            pair<int, int> front = pq.front();
+            pq.pop();
+            for (auto y : adjacencyList[front.first])
+            {
+                
+                if (!vis[y])
+                {
+                    vis[y] = 1;
+                    pq.push({y,front.first});
+                }
+                else if (front.second != y)
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    bool cycleDetectUsingBFS()
+    {
+        int visited[n] = {0};
+        for (int i = 0; i < n; i++)
+            if (!visited[i])
+                if (cycleHelperBFS(visited, i))
+                    return true;
+        return false;
+    }
+    bool cycleHelperDFS(bool vis[], int sv, int par)
+    {
+        vis[sv] = true;
+        for (auto y : adjacencyList[sv])
+        {
+            if (!vis[y])
+                if(cycleHelperDFS(vis, y, sv)) return true;
+            else if (y != par)
+                return true;
+        }
+        return false;
+    }
+
+    bool cycleDetectUsingDFS()
+    {
+        int visited[n] = {0};
+        for (int i = 0; i < n; i++)
+            if (!visited[i])
+                if (cycleHelperDFS(visited, i, -1))
+                    return true;
+        return false;
+    }
+    void topologicalSortUsingDFS_helper(int sv,  int vis[], stack<int> &t ){
+        vis[sv] = 1;
+        for(auto x : adjacencyList[sv]){
+            topologicalSortUsingDFS_helper(x,vis,t);
+            t.push(x);
+        }
+
+    }
+    void topologicalSortUsingDFS(){
+        int visited[n] = {0};
+        stack<int> t;
+        for (int i = 0; i < n; i++)
+        if (!visited[i]){
+            topologicalSortUsingDFS_helper(i,visited,t);
+            t.push(i);
+        }
+    }
+
+
+    int toplologicalSortUsingBFS(){
+        queue<int> pd;
+
+        //calculate indegree of each
+        vector<int>indegree(n,0);
+        for(int i=0; i<n; i++){
+            for(auto it : adjacencyList[i]) indegree[it]++;
+        }
+        for(int i=0; i<n; i++) if(indegree[i]==0) pd.push(i);
+        vector<int> topo;
+        while(!pd.empty()){
+            int node = pd.front();
+            topo.push_back(node);
+            pd.pop();
+            for(auto c :adjacencyList[node]){
+                indegree[c]--;
+                if(indegree[c]==0) pd.push(c);
+            }
+        }
+        return topo.size();
+    }
+
+    bool checkCycleusingkahnAlgorithm(){
+        if(topologicalSortUsingBFS()==n) return cycle;
+        else return true;
+    }
+    vector<int> shortestDistance(int sv){
+        vector<int> dis(n,INT_MAX);
+        dis[sv] = 0;
+        queue<int> pd;
+        pd.push(sv);
+        while(!pd.empty()){
+            int node = pd.front();
+            pd.pop();
+            for(auto x : adjacencyList[node]){
+                if(dis[node]+1<dis[x]){
+                    dis[x] = dis[node]+1;
+                    pd.push(x);
+                }
+            }
+        }
+        return dis;
+    }
 };
 
 /*        Pending class        */
@@ -315,7 +432,7 @@ public:
         this->n = n;
         this->e = e;
         this->matrix = new int *[n + 1];
-        this->parent = new int[n+1];
+        this->parent = new int[n + 1];
         for (int i = 0; i <= n; i++)
         {
             this->matrix[i] = new int[n + 1];
@@ -390,9 +507,7 @@ public:
             cout << "\n";
         }
     }
-    void fillParent(){
-        
-    }
+
 };
 
 //----------------------weighted graphs------------------------
@@ -418,10 +533,8 @@ public:
             int second;
             int weight;
             cin >> first >> second >> weight;
-            pair<int, int> p1 = {second, weight};
-            pair<int, int> p2 = {first, weight};
-            List[first].push_back(p1);
-            List[second].push_back(p2);
+            pair<int, int> p = {second, weight};
+            List[first].push_back(p);
         }
     }
     void print()
@@ -437,6 +550,39 @@ public:
             cout << "\n";
         }
     }
+    void topologicalSortUsingDFS_helper(int sv,  int vis[], stack<int> &t ){
+        for(auto x : adj[sv]){
+            if(!vis[x.first]){
+                topologicalSortUsingDFS_helper(x.first,vis,t);
+                t.push(x.first);
+            }
+            
+        }
+
+    }
+    vector<int> shortestPath(int src){
+        int visited[n] = {0};
+        stack<int> t;
+        for (int i = 0; i < n; i++)
+        if (!visited[i]){
+            topologicalSortUsingDFS_helper(i,visited,t);
+            t.push(i);
+        }
+        vector<int> dis(n,INT_MAX);
+        while(!t.empty()){
+            int node = t.top();
+            t.pop();
+            if(dis[node]!=INT_MAX){
+                for(auto x :List[node]){
+                    if(dis[node]+x.second<dis[x.first]){
+                        x.first = dis[node]+x.second;
+                    }
+                }
+            }
+        }
+
+    }
+
 };
 
 //--------------- Graph using the edgeList-----------
@@ -511,7 +657,7 @@ public:
     void kruskal()
     {
         // The first step is to sort the List on the based of weights.
-        bool visited[n] = {false};
+        int visited[n] = {0};
         Edge MST[n - 1];
 
         sort(List, List + e, compare);
@@ -530,7 +676,7 @@ public:
             {
                 MST[count] = current;
                 count++;
-                parent[current.source] = destinationParent;
+                parent[sourceParent] = destinationParent;
             }
             i++;
         }
