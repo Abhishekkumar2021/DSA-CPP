@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+    <script src="https://kit.fontawesome.com/51080a405a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/github.min.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div class="array">
+        <div class="navbar">
+            <h1>DSA Pages</h1>
+            <a href="./index.html"><i class="fa-solid fa-house"></i>Home</a>
+        </div>
+
+        <div class="page">
+            <div class="problem">
+                <h2><i class="fa-brands fa-battle-net"></i>Find the sum of all elements in an array</h2>
+                <div class="des">
+                    <p>This can be done easily by maintaining an <b>accumalator variable</b> and looping through the
+                        whole array.</p>
+                    <pre><code lang="cpp">int getSum(int arr[],int n){
+    int sum = 0;
+    for(int i=0; i&lt;n; i++)
+        sum+=arr[i];
+    return sum;
+}
+</code></pre>
+                </div>
+            </div>
+            <div class="problem">
+                <h2><i class="fa-brands fa-battle-net"></i>Find the maximum of all elements in an array</h2>
+                <div class="des">
+                    <p>This can be done easily by maintaining a <b>maxi</b> variable with initial value such that this
+                        can't never be a maximum and looping throught the whole array.</p>
+                    <pre><code lang="cpp">int getMax(int arr[],int n){
+    int maxi = INT_MIN;
+    for(int i=0; i&lt;n; i++)
+        maxi = max(maxi,arr[i]);
+    return maxi;
+}
+</code></pre>
+                </div>
+            </div>
+            <div class="problem">
+                <h2><i class="fa-brands fa-battle-net"></i>Find the minimum of all elements in an array</h2>
+                <div class="des">
+                    <p>This can be done easily by maintaining a <b>mini</b> variable with initial value such that this
+                        can't never be a minimum and looping throught the whole array.</p>
+                    <pre><code lang="cpp">int getMin(int arr[],int n){
+    int mini = INT_MAX;
+    for(int i=0; i&lt;n; i++)
+        mini = min(mini,arr[i]);
+    return mini;
+}
+</code></pre>
+                </div>
+            </div>
+            <div class="problem">
+                <h2><i class="fa-brands fa-battle-net"></i>Kadane's algorithm - Maximum subarray sum</h2>
+                <div class="des">
+                    <a href="https://www.interviewbit.com/problems/max-sum-contiguous-subarray/">Problem link <i
+                            class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <p>The idea is to have the sum of subarray which is under current observation and as soon as the
+                        current sum become negative we reset it to zero because we don't want it to contribute to our
+                        ans. And at each step we update the <b>maxi(The max sum possible)</b> </p>
+                    <pre><code lang="cpp">int maxSubArray(const vector<int> &A) {
+    int curr = 0;
+    int maxi = 0;
+    for(int i=0; i&lt;A.size(); i++){
+        curr+=A[i];
+        if(curr&lt;0) curr = 0;
+        maxi = max(maxi,curr);
+    }
+    if(maxi==0) return *max_element(A.begin(),A.end());
+    return maxi;
+}
+</code></pre>
+                    <p>The complexity of above algorithm is <b>O(N)</b></p>
+
+                </div>
+            </div>
+            <div class="problem">
+                <h2><i class="fa-brands fa-battle-net"></i>Find the longest ascending subarray of an array</h2>
+                <div class="des">
+                    <p>We can think that either the subarray will be right half,left half, or middle so we try out all
+                        possibilities and get the optimal one.</p>
+                    <pre><code lang="cpp">pair<int, int> LAS_cross(int arr[], int l, int r)
+{
+    int mid = (l + r) / 2;
+    int leftIndex = mid;
+    int rightIndex = mid;
+    for (int i = mid; i > l; i--)
+    {
+        if (arr[i] >= arr[i - 1])
+        {
+            leftIndex = i - 1;
+        }
+        else
+            break;
+    }
+    for (int i = mid + 1; i < r; i++)
+    {
+        if (arr[i] <= arr[i + 1])
+        {
+            rightIndex = i + 1;
+        }
+        else
+            break;
+    }
+    return {leftIndex, rightIndex};
+}
+pair< int, int > LAS(int arr[], int l, int r)
+{
+    if (l < r)
+    {
+        int mid = (l + r) / 2;
+        pair&lt;int, int> ans_cross = LAS_cross(arr, l, r);
+        pair&lt;int, int> ans_left = LAS(arr, l, mid);
+        pair&lt;int, int> ans_right = LAS(arr, mid + 1, r);
+        int crossDiff = ans_cross.second - ans_cross.first;
+        int leftDiff = ans_left.second - ans_left.first;
+        int rightDiff = ans_right.second - ans_right.first;
+        if (leftDiff > rightDiff && leftDiff > crossDiff)
+            return ans_left;
+        else if (crossDiff > leftDiff && crossDiff > rightDiff)
+            return ans_cross;
+        else
+            return ans_right;
+    } 
+    return {l,r};
+}
+</code></pre>
+                    <p>This is a recursive solution and have a time complexity having recurrence realtion as <b>T(N) =
+                            2T(N/2) + O(N)</b> and using Masters'theorem we get the <b>T(N)</b> as <b>T(N) =
+                            O(NlogN)</b></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script src="../app.js"></script>
+
+</html>

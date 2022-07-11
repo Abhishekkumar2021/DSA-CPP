@@ -39,82 +39,82 @@ int fun()
 {
     return 1, 2, 3, 4, 5;
 }
-tuple<int, int, int> LAS_cross(int arr[], int l, int r)
-{
-    int mid = (l + r) / 2;
-    int leftIndex = mid;
-    int rightIndex = mid;
-    int currentMax = arr[mid];
-    int currentMin = arr[mid];
-    int count = 0;
-
-    for (int i = mid; i >= l; i--)
-    {
-
-        cout << "Current minimum = " << currentMin << endl;
-        if (arr[i] <= currentMin)
-        {
-            leftIndex = i;
-            currentMin = arr[i];
-            count++;
-        }
-    }
-    for (int i = mid + 1; i <= r; i++)
-    {
-        cout << "Current maximum = " << currentMax << endl;
-        if (arr[i] >= currentMax)
-        {
-            rightIndex = i;
-            currentMax = arr[i];
-            count++;
-        }
-    }
-    return {leftIndex, rightIndex, count};
-}
-// pair<int, int> LAS_cross(int arr[], int l, int r)
+// tuple<int, int, int> LAS_cross(int arr[], int l, int r)
 // {
 //     int mid = (l + r) / 2;
 //     int leftIndex = mid;
 //     int rightIndex = mid;
-//     for (int i = mid; i > l; i--)
+//     int currentMax = arr[mid];
+//     int currentMin = arr[mid];
+//     int count = 0;
+
+//     for (int i = mid; i >= l; i--)
 //     {
-//         if (arr[i] >= arr[i - 1])
+
+//         cout << "Current minimum = " << currentMin << endl;
+//         if (arr[i] <= currentMin)
 //         {
-//             leftIndex = i - 1;
+//             leftIndex = i;
+//             currentMin = arr[i];
+//             count++;
 //         }
-//         else
-//             break;
 //     }
-//     for (int i = mid + 1; i < r; i++)
+//     for (int i = mid + 1; i <= r; i++)
 //     {
-//         if (arr[i] <= arr[i + 1])
+//         cout << "Current maximum = " << currentMax << endl;
+//         if (arr[i] >= currentMax)
 //         {
-//             rightIndex = i + 1;
+//             rightIndex = i;
+//             currentMax = arr[i];
+//             count++;
 //         }
-//         else
-//             break;
 //     }
-//     return {leftIndex, rightIndex};
+//     return {leftIndex, rightIndex, count};
 // }
-// pair<int, int> LAS(int arr[], int l, int r)
-// {
-//     if (l < r)
-//     {
-//         int mid = (l + r) / 2;
-//         pair<int, int> ans_cross = LAS_cross(arr, l, r);
-//         pair<int, int> ans_left = LAS(arr, l, mid);
-//         pair<int, int> ans_right = LAS(arr, mid + 1, r);
-//         int crossDiff = ans_cross.second - ans_cross.first;
-//         int leftDiff = ans_left.second - ans_left.first;
-//         int rightDiff = ans_right.second - ans_right.first;
-//         if (leftDiff > rightDiff && leftDiff > crossDiff)
-//             return ans_left;
-//         else if (crossDiff > leftDiff && crossDiff > rightDiff)
-//             return ans_cross;
-//         else
-//             return ans_right;
-//     }
-// }
+pair<int, int> LAS_cross(int arr[], int l, int r)
+{
+    int mid = (l + r) / 2;
+    int leftIndex = mid;
+    int rightIndex = mid;
+    for (int i = mid; i > l; i--)
+    {
+        if (arr[i] >= arr[i - 1])
+        {
+            leftIndex = i - 1;
+        }
+        else
+            break;
+    }
+    for (int i = mid + 1; i < r; i++)
+    {
+        if (arr[i] <= arr[i + 1])
+        {
+            rightIndex = i + 1;
+        }
+        else
+            break;
+    }
+    return {leftIndex, rightIndex};
+}
+pair<int, int> LAS(int arr[], int l, int r)
+{
+    if (l < r)
+    {
+        int mid = (l + r) / 2;
+        pair<int, int> ans_cross = LAS_cross(arr, l, r);
+        pair<int, int> ans_left = LAS(arr, l, mid);
+        pair<int, int> ans_right = LAS(arr, mid + 1, r);
+        int crossDiff = ans_cross.second - ans_cross.first;
+        int leftDiff = ans_left.second - ans_left.first;
+        int rightDiff = ans_right.second - ans_right.first;
+        if (leftDiff > rightDiff && leftDiff > crossDiff)
+            return ans_left;
+        else if (crossDiff > leftDiff && crossDiff > rightDiff)
+            return ans_cross;
+        else
+            return ans_right;
+    }
+}
 
 pair<int, int> LAS_direct(int arr[], int l, int r)
 {

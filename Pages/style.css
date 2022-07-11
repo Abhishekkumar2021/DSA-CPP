@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500&display=swap');
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    font-weight: normal;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    color: rgba(33, 33, 44, 0.792);
+    background:rgba(36, 16, 137, 0.047);
+    font-family: 'Montserrat', sans-serif;
+}
+pre{
+    margin:5px 0;
+    border-radius: 5px;
+}
+code,b{
+    font-family: 'Fira Code', monospace !important;
+
+    padding:0 !important;
+
+}
+.navbar{
+    position: sticky;
+    top:0;
+    display: flex;
+    justify-content: space-between;
+    padding:10px;
+    margin-bottom:1px;
+    background:white;
+    box-shadow:0 2px 4px rgba(0, 0, 0, 0.101);
+    align-items: center;
+}
+.navbar a{
+    padding:10px;
+    background:rgba(0, 0, 255, 0.638);
+    border-radius: 2px;
+    color:white;
+    display: flex;
+    align-items: center;
+    gap:8px;
+    text-decoration: none;
+}
+.navbar a:hover{
+    background:white;
+    color:rgba(0, 0, 255, 0.638);
+    outline: 2px solid rgba(0, 0, 255, 0.638);
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding:20px;
+    gap:20px;
+}
+.card{
+    width:300px;
+    background:white;
+    box-shadow:0 2px 4px rgba(0, 0, 0, 0.23);
+    border-radius: 5px;
+}
+.image{
+    width:100%;
+}
+.image img{
+    width:100%;
+    border-radius: 5px;
+    border:2px solid white;
+}
+.content{
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+.content h2{
+    border-bottom: 1px solid rgb(182, 182, 182);
+    padding:5px 0;
+}
+.content a{
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    gap:8px;
+    text-decoration: none;
+
+}
+.content a:hover{
+    text-decoration: underline;
+}
+.page{
+    width:800px;
+    max-width:96%;
+    background:white;
+    padding:20px;
+    box-shadow:0 2px 4px rgba(0, 0, 0, 0.23);
+    margin:10px auto;
+    border-radius: 5px;
+}
+.problem h2{
+    display: flex;
+    align-items: center;
+    gap:8px;
+}
+.problem h2 i{
+    font-size: 40px;
+}
+.problem .des{
+    padding: 5px 10px;
+    margin-bottom: 20px;
+}
+b{
+    font-weight: bold;
+}
+.des a{
+    text-decoration: none;
+    color: green;
+    
+}
+.des p{
+    padding: 6px 0;
+}
+.des a:hover{
+    text-decoration: underline;
+    
+}
