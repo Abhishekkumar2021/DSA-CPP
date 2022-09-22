@@ -18,8 +18,6 @@ public:
 };
 int main()
 {
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
     child C(20, 200101006);
     C.display();
 }

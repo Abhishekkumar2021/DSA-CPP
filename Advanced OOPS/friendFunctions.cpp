@@ -41,7 +41,7 @@ public:
     }
     friend void printPrivateItems();
     friend void B ::printPrivateItemsOfA();
-    friend class B; // we have defined the class B as friend function .... this friendship is one way i.e class B can access all properties of the class A but vice-versa is not true
+    friend class B; // we have defined the class B as friend class .... this friendship is one way i.e class B can access all properties of the class A but vice-versa is not true
 };
 void printPrivateItems()
 {
