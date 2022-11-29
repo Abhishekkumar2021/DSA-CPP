@@ -7,10 +7,10 @@ int main(int argc,char**argv)
     while ((x = fgetc(from)) != EOF)
     {
         cc++;
-        if(x='\n');
-        lc++;
+        if(x=='\n')
+            lc++;
         if(x==' ' || x==',' || x=='.' || x=='\n')
-          wc++;
+            wc++;
     }
     fclose(from);
     printf("The number of words = %ld\n", wc);
