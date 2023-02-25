@@ -29,6 +29,5 @@ int main(){
 		cin>>weight[i];
 		cin>>value[i]; 
 	}
-	cout<<f();
 	
 }

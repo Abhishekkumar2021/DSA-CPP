@@ -36,6 +36,26 @@ void targetSum(vi &cost, int n,int target, vvi &dp){
 
 		
 }
+
+int func(int start,int n,int k ,vector<int>&arr,vector<vector<int>>&dp)// n is the last index value
+{ 
+	//Base case
+	if(k==0) return 1;
+	if(start>n) return 0;
+	if(k<0) return 0;
+	if(dp[start][k] !=-1)
+	  	return dp[start][k];
+    
+	int pick = func(start+1,n,k-arr[start],arr,dp);
+	int non_pick = func(start+1,n,k,arr,dp);
+	return dp[start][k] = pick+non_pick;
+}
+int findWays(vector<int> &num, int k)
+{
+    int n = num.size();
+    vector<vector<int>>dp(n,vector<int>(k+1,-1));
+    return func(0,n-1,k,num,dp);
+}
 int main(){
 	int n,target;
 	cin>>n>>target;
