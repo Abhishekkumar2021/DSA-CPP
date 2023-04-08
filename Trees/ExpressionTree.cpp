@@ -1,15 +1,15 @@
 #include<bits/stdc++.h>
 using namespace std;
-class expTree{
+class ExpTree{
     public:
     char data;
-    expTree *left,*right;
-    expTree(){
+    ExpTree *left,*right;
+    ExpTree(){
         data = '\0';
         left = NULL;
         right = NULL;
     }
-    ~expTree(){
+    ~ExpTree(){
         delete left;
         delete right;
         cout<<data<<" Deleted!\n";

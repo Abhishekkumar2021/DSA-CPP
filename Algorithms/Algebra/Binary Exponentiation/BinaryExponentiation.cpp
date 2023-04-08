@@ -8,7 +8,7 @@ using namespace std;
 
   let's understand the concept of binary exponentiation :
   let's take an example --> find 5^13 :
-    so to this problem we can have a solution by simply Naive method i.e pow(5,13) = pow(5,12)*5 and againrepeating the same process till 1. but this solution is going to take O(N) time.
+    so to this problem we can have a solution by simply Naive method i.e pow(5,13) = pow(5,12)*5 and again repeating the same process till 1. but this solution is going to take O(N) time.
     But using the binary exponentiation method we can do it in O(log(N)) time. Let see how .....
     we can write 13 as 1101 now to find 5^13 we have to just multiply 3 terms as follows 5^13 = 5^8 * 5^4 * 5^1 . But to do this we must know the values of each term on right hand side which again follow the same process, so what is the benefit of using binomial exponentiation?
     we don't have to calculate each term again and again as because we can find pow(a,b) simply if we know the values of each term like a^1, a^2, a^4 ....a^floor(log2(N)). and we can see from it that the every next term is the square of the current term which is very helpful in the implementation. Let see How ?
