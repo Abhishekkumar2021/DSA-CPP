@@ -5,7 +5,7 @@ vector<int> Dijkstra(vector<pair<int, int>> adj[], int n, int src)
 {
     vector<int> dis(n, INT_MAX);
     dis[src] = 0;
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> q;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> q;  // greater is used to make min heap
     q.push({src, 0});
     while (!q.empty())
     {
