@@ -28,6 +28,7 @@ vector<vector<int>> identity(int n){
 
 	return ans;
 }
+
 // Matrix exponentiation
 vector<vector<int>> exp(vector<vector<int>> m, int n){
 	if(n==1) return m;

@@ -35,7 +35,6 @@ class DSU{
                 parent[s2] = s1;
                 rank[s1]++;
             }
-            parent[s1] = s2;
         }
     }
 
