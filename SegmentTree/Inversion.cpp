@@ -84,14 +84,15 @@ int main()
     int n;
     cin >> n;
     vector<int> arr(n);
+    int maxi = INT_MIN;
     for (int i = 0; i < n; i++)
         cin >> arr[i];
     vector<int> ans;
-    vector<int> vis(n+1, 0);
+    vector<int> vis(maxi+1, 0);
     SegmentTree st;
     st.build(vis);
     for(int i=0; i<n; i++){
-        int count = st.query(arr[i], n);
+        int count = st.query(arr[i], maxi);
         ans.push_back(count);
         st.update(arr[i], 1);
     }
